@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dq2prjf3vucfg"]
+
+[ext_resource type="PackedScene" uid="uid://bmxxpb4sh4ke6" path="res://ingame/block/block_base.tscn" id="1_oyhmv"]
+[ext_resource type="Texture2D" uid="uid://dslx0i5ig2n6v" path="res://assets/map/blocks/hatena.png" id="2_ime3w"]
+[ext_resource type="Script" uid="uid://iyix6wtanbwn" path="res://ingame/block/hatena_block.gd" id="2_jb5dm"]
+[ext_resource type="Texture2D" uid="uid://dtxuwf5t8x20p" path="res://assets/map/blocks/normal.png" id="4_ahm73"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jb5dm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ime3w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ahm73")
+}],
+"loop": true,
+"name": &"emitted",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahm73"]
+size = Vector2(16, 16)
+
+[node name="HatenaBlock" unique_id=1343604321 instance=ExtResource("1_oyhmv")]
+scale = Vector2(5, 5)
+script = ExtResource("2_jb5dm")
+item = null
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=140260655]
+sprite_frames = SubResource("SpriteFrames_jb5dm")
+animation = &"emitted"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2104412240]
+shape = SubResource("RectangleShape2D_ahm73")
+
+[connection signal="hitted" from="." to="." method="_on_hitted"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctc4r7mmmt7a3"]
 
-[ext_resource type="Script" uid="uid://c3115knhbj8sk" path="res://character/character_base.gd" id="1_b6wph"]
+[ext_resource type="Script" uid="uid://c3115knhbj8sk" path="res://ingame/character/character_base.gd" id="1_b6wph"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uf7bs"]
 animations = [{
@@ -22,6 +22,8 @@ animations = [{
 
 [node name="CharacterBase" type="CharacterBody2D" unique_id=661548527]
 scale = Vector2(10, 10)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_b6wph")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1704420819]

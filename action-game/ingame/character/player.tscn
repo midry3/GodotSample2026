@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b70dql88l41p5"]
 
-[ext_resource type="PackedScene" uid="uid://ctc4r7mmmt7a3" path="res://character/character_base.tscn" id="1_2orxn"]
-[ext_resource type="Script" uid="uid://hpcymsm5lxl4" path="res://character/player.gd" id="2_aypkh"]
+[ext_resource type="PackedScene" uid="uid://ctc4r7mmmt7a3" path="res://ingame/character/character_base.tscn" id="1_2orxn"]
+[ext_resource type="Script" uid="uid://hpcymsm5lxl4" path="res://ingame/character/player.gd" id="2_aypkh"]
 [ext_resource type="Texture2D" uid="uid://7bu8kbuof1ac" path="res://assets/character/player.png" id="2_monf5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aypkh"]
@@ -75,10 +75,13 @@ animations = [{
 size = Vector2(13, 14)
 
 [node name="Player" unique_id=661548527 instance=ExtResource("1_2orxn")]
+collision_layer = 5
+collision_mask = 5
+platform_on_leave = 2
 script = ExtResource("2_aypkh")
 on_air_vx = 100
 gravity = 1500
-jump_power = 600
+jump_power = 750
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1704420819]
 sprite_frames = SubResource("SpriteFrames_tpic6")
@@ -87,5 +90,8 @@ animation = &"default"
 [node name="CollisionShape2D" parent="." index="1" unique_id=788530757]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_aypkh")
+
+[node name="Camera2D" type="Camera2D" parent="." index="2" unique_id=243651071]
+limit_left = 0
 
 [connection signal="jump_finished" from="." to="." method="_on_jump_finished"]

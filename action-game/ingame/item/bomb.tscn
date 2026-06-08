@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bwxrwbijkx0tg"]
+
+[ext_resource type="PackedScene" uid="uid://kaool77h3svi" path="res://ingame/item/item_base.tscn" id="1_aryg5"]
+[ext_resource type="Script" uid="uid://b04m0ynjs24s4" path="res://ingame/item/bomb.gd" id="2_8hbf4"]
+[ext_resource type="Texture2D" uid="uid://b6ii0jq4awyrj" path="res://assets/map/items/bomb.png" id="2_o0h6f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hbf4"]
+atlas = ExtResource("2_o0h6f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmp05"]
+atlas = ExtResource("2_o0h6f")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2gcj"]
+atlas = ExtResource("2_o0h6f")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_336dy"]
+atlas = ExtResource("2_o0h6f")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q71h"]
+atlas = ExtResource("2_o0h6f")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ubq0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hbf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmp05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2gcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_336dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q71h")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Bomb" unique_id=52708448 instance=ExtResource("1_aryg5")]
+script = ExtResource("2_8hbf4")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1412002894]
+sprite_frames = SubResource("SpriteFrames_1ubq0")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
