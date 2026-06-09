@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d011j3n7t7wki"]
+
+[ext_resource type="Texture2D" uid="uid://bbrffr253u8op" path="res://assets/character/player_died.png" id="1_n6dme"]
+[ext_resource type="Script" uid="uid://bj0f3dhns8haf" path="res://ingame/character/died_player.gd" id="2_prfrq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prfrq"]
+atlas = ExtResource("1_n6dme")
+region = Rect2(0, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8llx"]
+atlas = ExtResource("1_n6dme")
+region = Rect2(16, 0, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gegpb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prfrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8llx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DiedPlayer" type="AnimatedSprite2D" unique_id=989410601]
+modulate = Color(1, 1, 1, 0.5294118)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_gegpb")
+script = ExtResource("2_prfrq")

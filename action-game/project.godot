@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="ActionGame"
-run/main_scene="uid://w3youbhjk1bl"
+run/main_scene="uid://d35ortra6oiac"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://b5bkkeecjwy4m"
+Transition="*uid://bpf3svka1umik"
 
 [display]
 

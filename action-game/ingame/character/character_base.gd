@@ -8,7 +8,9 @@ enum Direction {
 }
 
 enum State {
-	
+	NORMAL,
+	JUMP,
+	DIED
 }
 
 const SPEED_MAX := 900
@@ -19,8 +21,8 @@ const SPEED_MAX := 900
 
 @onready var anim := $AnimatedSprite2D
 
+var current_state := State.NORMAL
 var accelation := Vector2(0, gravity) # 加速度
-var jump_started := false # 着地時に速度を0にするためのフラグ
 
 func _ready():
 	anim.play("default")
@@ -28,9 +30,9 @@ func _ready():
 func _physics_process(delta):
 	velocity += accelation * delta
 	move_and_slide()
-	if is_on_floor() and jump_started:
+	if is_on_floor() and is_jumping():
 		velocity = Vector2.ZERO
-		jump_started = false
+		current_state = State.NORMAL
 		jump_finished.emit() # jump_finishedシグナルを呼ぶ
 
 func to_idle() -> void:
@@ -59,7 +61,11 @@ func jump() -> void:
 	if anim.animation != "jump":
 		anim.play("jump")
 	velocity.y = -jump_power # 上方向は負
-	jump_started = true
+	current_state = State.JUMP
 
 func is_jumping() -> bool:
-	return jump_started # velocity.y != 0 ←当初のコード
+	return current_state == State.JUMP # velocity.y != 0 ←当初のコード
+
+func die() -> void:
+	current_state = State.DIED
+	queue_free()

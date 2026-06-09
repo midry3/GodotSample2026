@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dwe0e5htc5c1d"]
+
+[ext_resource type="PackedScene" uid="uid://bwxrwbijkx0tg" path="res://ingame/item/bomb.tscn" id="1_xm53w"]
+[ext_resource type="Texture2D" uid="uid://ckyonkuco6pog" path="res://assets/map/items/apple.png" id="3_mbtxc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuw4v"]
+atlas = ExtResource("3_mbtxc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vfhe"]
+atlas = ExtResource("3_mbtxc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbtxc"]
+atlas = ExtResource("3_mbtxc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to436"]
+atlas = ExtResource("3_mbtxc")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f44ri"]
+atlas = ExtResource("3_mbtxc")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlw81"]
+atlas = ExtResource("3_mbtxc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_to436"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuw4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vfhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbtxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_to436")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f44ri")
+}],
+"loop": false,
+"name": &"bomber",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlw81")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BlueAppleBomb" unique_id=52708448 instance=ExtResource("1_xm53w")]
+immediate_bomber = false
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1412002894]
+sprite_frames = SubResource("SpriteFrames_to436")
+frame = 0
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1646834696) index="0" unique_id=1434602268]
+position = Vector2(196, 400)
+
+[node name="SmokeAnimation" parent="." index="3" unique_id=1018906883]
+visible = false
+frame = 0
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="SmokeAnimation/Area2D" parent_id_path=PackedInt32Array(759338756) index="0" unique_id=585580662]
+disabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_fall_area_2d_body_entered"]

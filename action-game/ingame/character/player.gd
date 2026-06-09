@@ -3,7 +3,10 @@ class_name Player
 
 @export var on_air_vx := 100
 
+var died_player := preload("uid://d011j3n7t7wki")
+
 func _input(event):
+	if GameManager.get_current_stage().current_state != StageBase.State.PLAY: return
 	handle_key()
 	if is_on_floor():
 		if Input.get_axis("left", "right") == 0:
@@ -29,3 +32,12 @@ func handle_key() -> void:
 
 func _on_jump_finished():
 	handle_key()
+
+func die() -> void:
+	# die関数をオーバーライド
+	current_state = State.DIED
+	anim.hide()
+	var d := died_player.instantiate()
+	d.global_position = global_position
+	GameManager.get_current_stage().add_child(d)
+	GameManager.get_current_stage().game_over()

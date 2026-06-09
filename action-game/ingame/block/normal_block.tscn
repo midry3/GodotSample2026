@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bonifr0apu668"]
+
+[ext_resource type="PackedScene" uid="uid://bmxxpb4sh4ke6" path="res://ingame/block/block_base.tscn" id="1_ite5b"]
+[ext_resource type="Texture2D" uid="uid://dtxuwf5t8x20p" path="res://assets/map/blocks/normal.png" id="2_llh5e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6ojm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_llh5e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llh5e"]
+size = Vector2(15, 16)
+
+[node name="NormalBlock" unique_id=1343604321 instance=ExtResource("1_ite5b")]
+scale = Vector2(2, 2)
+motion_mode = 1
+platform_floor_layers = 4294901761
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=140260655]
+sprite_frames = SubResource("SpriteFrames_f6ojm")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2104412240]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_llh5e")

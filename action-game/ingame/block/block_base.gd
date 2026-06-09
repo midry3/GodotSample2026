@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BlockBase
 signal hitted # ブロックが叩かれたシグナル
 
 @onready var anim := $AnimatedSprite2D
@@ -21,3 +22,6 @@ func hit() -> void:
 	t.tween_property(self, "position:y", position.y-50, 0.1)
 	t.tween_property(self, "position:y", position.y, 0.1)
 	hitted.emit()
+
+func broke() -> void:
+	queue_free()
