@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ctc4r7mmmt7a3" path="res://ingame/character/character_base.tscn" id="1_2orxn"]
 [ext_resource type="Script" uid="uid://hpcymsm5lxl4" path="res://ingame/character/player.gd" id="2_aypkh"]
 [ext_resource type="Texture2D" uid="uid://7bu8kbuof1ac" path="res://assets/character/player.png" id="2_monf5"]
+[ext_resource type="AudioStream" uid="uid://wr5i01u884nl" path="res://assets/sound/died_se.mp3" id="4_o7wyi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aypkh"]
 atlas = ExtResource("2_monf5")
@@ -96,5 +97,8 @@ shape = SubResource("RectangleShape2D_aypkh")
 [node name="Camera2D" type="Camera2D" parent="." index="2" unique_id=243651071]
 limit_left = 0
 limit_bottom = 1280
+
+[node name="DiedSE" type="AudioStreamPlayer" parent="." index="3" unique_id=971035139]
+stream = ExtResource("4_o7wyi")
 
 [connection signal="jump_finished" from="." to="." method="_on_jump_finished"]

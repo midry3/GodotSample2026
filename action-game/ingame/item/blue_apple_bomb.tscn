@@ -66,9 +66,6 @@ sprite_frames = SubResource("SpriteFrames_to436")
 frame = 0
 frame_progress = 0.0
 
-[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1646834696) index="0" unique_id=1434602268]
-position = Vector2(196, 400)
-
 [node name="SmokeAnimation" parent="." index="3" unique_id=1018906883]
 visible = false
 frame = 0

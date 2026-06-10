@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://b5bkkeecjwy4m"
 Transition="*uid://bpf3svka1umik"
+Settings="*uid://bsohs1fhxx61p"
 
 [display]
 
@@ -62,3 +63,4 @@ jump={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

@@ -3,6 +3,8 @@ class_name Player
 
 @export var on_air_vx := 100
 
+@onready var died_se := $DiedSE
+
 var died_player := preload("uid://d011j3n7t7wki")
 
 func _input(event):
@@ -36,8 +38,11 @@ func _on_jump_finished():
 func die() -> void:
 	# die関数をオーバーライド
 	current_state = State.DIED
+	velocity = Vector2.ZERO
+	accelation = Vector2.ZERO
 	anim.hide()
 	var d := died_player.instantiate()
 	d.global_position = global_position
+	died_se.play()
 	GameManager.get_current_stage().add_child(d)
 	GameManager.get_current_stage().game_over()
