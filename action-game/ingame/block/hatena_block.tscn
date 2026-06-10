@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dslx0i5ig2n6v" path="res://assets/map/blocks/hatena.png" id="2_ime3w"]
 [ext_resource type="Script" uid="uid://iyix6wtanbwn" path="res://ingame/block/hatena_block.gd" id="2_jb5dm"]
 [ext_resource type="Texture2D" uid="uid://dtxuwf5t8x20p" path="res://assets/map/blocks/normal.png" id="4_ahm73"]
+[ext_resource type="AudioStream" uid="uid://mevax3jd0pgg" path="res://assets/sound/demo_item_emit_se.wav" id="5_h464i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jb5dm"]
 animations = [{
@@ -38,5 +39,9 @@ animation = &"emitted"
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=2104412240]
 shape = SubResource("RectangleShape2D_ahm73")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2" unique_id=579284397]
+stream = ExtResource("5_h464i")
+volume_db = -6.318
 
 [connection signal="hitted" from="." to="." method="_on_hitted"]

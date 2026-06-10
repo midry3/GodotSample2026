@@ -8,6 +8,7 @@ extends "res://ingame/item/item_base.gd"
 @onready var smoke_anim := $SmokeAnimation
 @onready var bomb_area := $SmokeAnimation/Area2D/CollisionShape2D
 @onready var ignition_se := $AudioStreamPlayer2D
+@onready var bomber_se := $AudioStreamPlayer2D2
 
 var is_bombering := false
 
@@ -39,6 +40,7 @@ func _on_animated_sprite_2d_animation_finished():
 		anim.hide()
 		smoke_anim.show()
 		smoke_anim.play()
+		bomber_se.play()
 		await get_tree().create_timer(0.3, false).timeout
 		bomb_area.disabled = false
 
