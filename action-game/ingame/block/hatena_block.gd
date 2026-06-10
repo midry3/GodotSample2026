@@ -3,6 +3,7 @@ extends "res://ingame/block/block_base.gd"
 @export var item: PackedScene
 
 @onready var collision := $CollisionShape2D
+@onready var emit_se := $AudioStreamPlayer2D
 
 var emitted := false
 
@@ -11,6 +12,7 @@ func _on_hitted():
 	collision.disabled = true
 	emitted = true
 	await get_tree().create_timer(0.2).timeout
+	emit_se.play()
 	var i := item.instantiate() as ItemBase
 	i.global_position = global_position
 	i.freeze = true

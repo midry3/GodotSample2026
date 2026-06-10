@@ -24,6 +24,7 @@ theme_override_constants/separation = 100
 
 [node name="ToTitleButton" type="Button" parent="HBoxContainer" unique_id=843411228]
 process_mode = 3
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 150
 text = "タイトル"

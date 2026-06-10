@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b6ii0jq4awyrj" path="res://assets/map/items/bomb.png" id="2_o0h6f"]
 [ext_resource type="Texture2D" uid="uid://3k52ehe6xab2" path="res://assets/map/effects/smoke.png" id="4_pmp05"]
 [ext_resource type="AudioStream" uid="uid://djpvk8hq72gt7" path="res://assets/sound/demo_bomb_se.wav" id="5_u2gcj"]
+[ext_resource type="AudioStream" uid="uid://dp60dgggeyimg" path="res://assets/sound/demo_bomber_se.wav" id="6_336dy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hbf4"]
 atlas = ExtResource("2_o0h6f")
@@ -170,6 +171,9 @@ disabled = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4" unique_id=386315348]
 stream = ExtResource("5_u2gcj")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." index="5" unique_id=1211699787]
+stream = ExtResource("6_336dy")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SmokeAnimation" to="." method="_on_smoke_animation_animation_finished"]
