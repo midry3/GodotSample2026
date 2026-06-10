@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://b70dql88l41p5"]
+
+[ext_resource type="PackedScene" uid="uid://ctc4r7mmmt7a3" path="res://ingame/character/character_base.tscn" id="1_2orxn"]
+[ext_resource type="Script" uid="uid://hpcymsm5lxl4" path="res://ingame/character/player.gd" id="2_aypkh"]
+[ext_resource type="Texture2D" uid="uid://7bu8kbuof1ac" path="res://assets/character/player.png" id="2_monf5"]
+[ext_resource type="AudioStream" uid="uid://wr5i01u884nl" path="res://assets/sound/died_se.mp3" id="4_o7wyi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aypkh"]
+atlas = ExtResource("2_monf5")
+region = Rect2(0, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhoun"]
+atlas = ExtResource("2_monf5")
+region = Rect2(12, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdyh8"]
+atlas = ExtResource("2_monf5")
+region = Rect2(24, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe16m"]
+atlas = ExtResource("2_monf5")
+region = Rect2(24, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkowc"]
+atlas = ExtResource("2_monf5")
+region = Rect2(36, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw6nv"]
+atlas = ExtResource("2_monf5")
+region = Rect2(48, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpic6"]
+atlas = ExtResource("2_monf5")
+region = Rect2(60, 0, 12, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tpic6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aypkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhoun")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdyh8")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe16m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkowc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw6nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpic6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aypkh"]
+size = Vector2(10.700001, 12)
+
+[node name="Player" unique_id=661548527 instance=ExtResource("1_2orxn")]
+z_index = 1
+collision_layer = 1
+collision_mask = 5
+platform_on_leave = 2
+script = ExtResource("2_aypkh")
+on_air_vx = 100
+gravity = 1500
+jump_power = 1000
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1704420819]
+sprite_frames = SubResource("SpriteFrames_tpic6")
+animation = &"default"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=788530757]
+position = Vector2(-0.35000008, 0.9999998)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_aypkh")
+
+[node name="Camera2D" type="Camera2D" parent="." index="2" unique_id=243651071]
+limit_left = 0
+limit_bottom = 1280
+
+[node name="DiedSE" type="AudioStreamPlayer" parent="." index="3" unique_id=971035139]
+stream = ExtResource("4_o7wyi")
+
+[connection signal="jump_finished" from="." to="." method="_on_jump_finished"]

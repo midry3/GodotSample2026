@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cd7bul68q3inu"]
+
+[ext_resource type="Script" uid="uid://bkwg4wgnj56yl" path="res://ingame/game_over.gd" id="1_h16ob"]
+
+[node name="GameOver" type="Node2D" unique_id=858280978]
+script = ExtResource("1_h16ob")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1723387977]
+offset_right = 1920.0
+offset_bottom = 1280.0
+color = Color(0, 0, 0, 0.3882353)
+
+[node name="Label" type="Label" parent="." unique_id=2049125360]
+offset_left = 238.0
+offset_top = 194.0
+offset_right = 1789.0
+offset_bottom = 538.0
+theme_override_font_sizes/font_size = 250
+text = "ゲームオーバー！"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=175454653]
+offset_left = 275.0
+offset_top = 668.0
+offset_right = 1594.0
+offset_bottom = 881.0
+theme_override_constants/separation = 100
+
+[node name="ContinueButton" type="Button" parent="HBoxContainer" unique_id=685219760]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "コンティニュー"
+
+[node name="ToTitleButton" type="Button" parent="HBoxContainer" unique_id=843411228]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "タイトル"
+
+[connection signal="pressed" from="HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

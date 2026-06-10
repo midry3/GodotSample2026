@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bwu7uhfesy537"]
+
+[ext_resource type="Script" uid="uid://j50v5udxtd1s" path="res://singleton/loading.gd" id="1_ox73n"]
+
+[node name="Loading" type="Node2D" unique_id=255210312]
+script = ExtResource("1_ox73n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=985964569]
+offset_left = 395.0
+offset_top = 454.0
+offset_right = 435.0
+offset_bottom = 494.0
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=939058116]
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "ローディング中"
+
+[node name="DotLabel" type="Label" parent="HBoxContainer" unique_id=1186345131]
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "."
+
+[node name="DotLabel2" type="Label" parent="HBoxContainer" unique_id=463978703]
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "."
+
+[node name="DotLabel3" type="Label" parent="HBoxContainer" unique_id=1040053136]
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "."

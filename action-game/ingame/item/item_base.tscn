@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://kaool77h3svi"]
+
+[ext_resource type="Script" uid="uid://eik7mhpngft" path="res://ingame/item/item_base.gd" id="1_sgpji"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d2u0"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ItemBase" type="RigidBody2D" unique_id=16097929]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_sgpji")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1412002894]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_0d2u0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1120692271]
+scale = Vector2(5, 5)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1646834696]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1434602268]
+
+[connection signal="ready" from="." to="." method="_on_ready"]

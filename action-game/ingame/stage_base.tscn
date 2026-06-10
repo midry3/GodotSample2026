@@ -1,0 +1,72 @@
+[gd_scene format=4 uid="uid://w3youbhjk1bl"]
+
+[ext_resource type="Script" uid="uid://du455e3va8mqi" path="res://ingame/stage_base.gd" id="1_frf00"]
+[ext_resource type="PackedScene" uid="uid://b70dql88l41p5" path="res://ingame/character/player.tscn" id="2_62a0l"]
+[ext_resource type="Texture2D" uid="uid://51qmbhf1fc18" path="res://assets/map/map_tile.png" id="2_142su"]
+[ext_resource type="PackedScene" uid="uid://bonifr0apu668" path="res://ingame/block/normal_block.tscn" id="3_ydh0o"]
+[ext_resource type="PackedScene" uid="uid://bpv2w4mvg47rt" path="res://ingame/object/goal.tscn" id="5_ydh0o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ydh0o"]
+texture = ExtResource("2_142su")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_d6b2c"]
+scenes/1/scene = ExtResource("3_ydh0o")
+
+[sub_resource type="TileSet" id="TileSet_r6yv1"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 4
+sources/0 = SubResource("TileSetAtlasSource_ydh0o")
+sources/1 = SubResource("TileSetScenesCollectionSource_d6b2c")
+
+[node name="Stage1" type="Node2D" unique_id=283867549]
+script = ExtResource("1_frf00")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=772970714]
+color = Color(1, 0.3372549, 0.09803922, 1)
+energy = 0.25
+
+[node name="Background" type="Parallax2D" parent="." unique_id=957185783]
+scroll_scale = Vector2(0.1, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background" unique_id=1484506697]
+modulate = Color(0.7919991, 0.79199916, 0.7919991, 1)
+light_mask = 0
+z_index = -1
+position = Vector2(0, 6.1035156e-05)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=195335787]
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAAAAYAAAAAAAEAAAABAAcAAAAAAAEAAAACAAcAAAAAAAEAAAADAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAAFAAcAAAAAAAEAAAAGAAcAAAAAAAEAAAAHAAcAAAAAAAEAAAAIAAcAAAAAAAEAAAAJAAcAAAAAAAEAAAAKAAcAAAAAAAEAAAALAAcAAAAAAAEAAAAMAAcAAAAAAAEAAAANAAcAAAAAAAEAAAAOAAcAAAAAAAEAAAAOAAYAAAAAAAEAAAANAAYAAAAAAAEAAAAMAAYAAAAAAAEAAAALAAYAAAAAAAEAAAAKAAYAAAAAAAEAAAAJAAYAAAAAAAEAAAAIAAYAAAAAAAEAAAAHAAYAAAAAAAEAAAAGAAYAAAAAAAEAAAAFAAYAAAAAAAEAAAAEAAYAAAAAAAEAAAADAAYAAAAAAAEAAAACAAYAAAAAAAEAAAABAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAPAAcAAAAAAAEAAAAPAAYAAAAAAAEAAAAQAAYAAAAAAAEAAAAQAAcAAAAAAAEAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAABAAAAAAARAAYAAAAAAAEAAAARAAcAAAAAAAEAAAARAAgAAAAAAAEAAAAQAAgAAAAAAAEAAAAPAAgAAAAAAAEAAAAOAAgAAAAAAAEAAAANAAgAAAAAAAEAAAAMAAgAAAAAAAEAAAALAAgAAAAAAAEAAAAKAAgAAAAAAAEAAAAJAAgAAAAAAAEAAAAIAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAGAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAEAAgAAAAAAAEAAAADAAgAAAAAAAEAAAACAAgAAAAAAAEAAAABAAgAAAAAAAEAAAAAAAgAAAAAAAEAAAD//wQAAAAAAAEAAAD+/wQAAAAAAAEAAAD+/wMAAAAAAAEAAAD+/wIAAAAAAAEAAAD//wMAAAAAAAEAAAD//wIAAAAAAAEAAAD//wEAAAAAAAEAAAD//wAAAAAAAAEAAAD+/wAAAAAAAAEAAAD+/wEAAAAAAAEAAAD/////AAAAAAEAAAD+////AAAAAAEAAAD+//7/AAAAAAEAAAD///7/AAAAAAEAAAAVAAUAAAAAAAAAAAAWAAUAAAAAAAAAAAAXAAUAAAAAAAAAAAAYAAUAAAAAAAAAAAAZAAUAAAAAAAAAAAAaAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAcAAUAAAAAAAAAAAAVAAYAAAAAAAEAAAAWAAYAAAAAAAEAAAAXAAYAAAAAAAEAAAAYAAYAAAAAAAEAAAAZAAYAAAAAAAEAAAAaAAYAAAAAAAEAAAAbAAYAAAAAAAEAAAAcAAYAAAAAAAEAAAAcAAcAAAAAAAEAAAAbAAcAAAAAAAEAAAAaAAcAAAAAAAEAAAAZAAcAAAAAAAEAAAAYAAcAAAAAAAEAAAAXAAcAAAAAAAEAAAAWAAcAAAAAAAEAAAAVAAcAAAAAAAEAAAAVAAgAAAAAAAEAAAAWAAgAAAAAAAEAAAAXAAgAAAAAAAEAAAAYAAgAAAAAAAEAAAAZAAgAAAAAAAEAAAAaAAgAAAAAAAEAAAAbAAgAAAAAAAEAAAAcAAgAAAAAAAEAAAAUAAUAAAAAAAAAAAATAAUAAAABAAAAABAUAAYAAAAAAAEAAAAUAAcAAAAAAAEAAAATAAgAAAAAAAEAAAATAAcAAAAAAAEAAAATAAYAAAAAAAEAAAAUAAgAAAAAAAEAAAAdAAYAAAAAAAEAAAAdAAcAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_r6yv1")
+
+[node name="Player" parent="." unique_id=661548527 instance=ExtResource("2_62a0l")]
+light_mask = 0
+position = Vector2(791, 730)
+
+[node name="Goal" parent="." unique_id=864473202 instance=ExtResource("5_ydh0o")]
+position = Vector2(410.99997, 644.99994)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1642392298]
+
+[node name="SettingButton" type="Button" parent="CanvasLayer" unique_id=927390191]
+offset_left = 1700.0
+offset_right = 1908.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 100
+text = "設定"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1045320660]
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/SettingButton" to="." method="_on_setting_button_pressed"]
