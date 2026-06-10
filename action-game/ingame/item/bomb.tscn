@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b04m0ynjs24s4" path="res://ingame/item/bomb.gd" id="2_8hbf4"]
 [ext_resource type="Texture2D" uid="uid://b6ii0jq4awyrj" path="res://assets/map/items/bomb.png" id="2_o0h6f"]
 [ext_resource type="Texture2D" uid="uid://3k52ehe6xab2" path="res://assets/map/effects/smoke.png" id="4_pmp05"]
+[ext_resource type="AudioStream" uid="uid://djpvk8hq72gt7" path="res://assets/sound/demo_bomb_se.wav" id="5_u2gcj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hbf4"]
 atlas = ExtResource("2_o0h6f")
@@ -49,7 +50,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"bomber",
-"speed": 2.0
+"speed": 1.2
 }, {
 "frames": [{
 "duration": 1.0,
@@ -148,19 +149,16 @@ fall_power = 800
 scale = Vector2(5.498756, 4.501244)
 sprite_frames = SubResource("SpriteFrames_1ubq0")
 animation = &"bomber"
-frame = 4
-frame_progress = 1.0
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1120692271]
 position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_u2gcj")
 
 [node name="SmokeAnimation" type="AnimatedSprite2D" parent="." index="3" unique_id=1018906883]
+visible = false
 z_index = 99
 scale = Vector2(60, 60)
 sprite_frames = SubResource("SpriteFrames_681iu")
-frame = 8
-frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="SmokeAnimation" index="0" unique_id=759338756]
 collision_layer = 7
@@ -168,6 +166,10 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SmokeAnimation/Area2D" index="0" unique_id=585580662]
 shape = SubResource("CircleShape2D_pmp05")
+disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4" unique_id=386315348]
+stream = ExtResource("5_u2gcj")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SmokeAnimation" to="." method="_on_smoke_animation_animation_finished"]

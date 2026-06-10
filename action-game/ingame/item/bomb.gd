@@ -7,6 +7,7 @@ extends "res://ingame/item/item_base.gd"
 
 @onready var smoke_anim := $SmokeAnimation
 @onready var bomb_area := $SmokeAnimation/Area2D/CollisionShape2D
+@onready var ignition_se := $AudioStreamPlayer2D
 
 var is_bombering := false
 
@@ -21,6 +22,7 @@ func start_bomb() -> void:
 	if is_bombering: return
 	is_bombering = true
 	await get_tree().create_timer(1.0, false).timeout
+	ignition_se.play()
 	var t := create_tween()
 	t.tween_property(anim, "scale:x", 4, 0.5)
 	t.tween_property(anim, "scale:x", 6, 0.5)
@@ -33,6 +35,7 @@ func start_bomb() -> void:
 
 func _on_animated_sprite_2d_animation_finished():
 	if anim.animation == "bomber":
+		ignition_se.stop()
 		anim.hide()
 		smoke_anim.show()
 		smoke_anim.play()
